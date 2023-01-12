@@ -12,9 +12,9 @@ async function bootstrap() {
     }),
   );
   const configService = app.get(ConfigService);
-  const corsHost = configService.get('CORS_HOST');
+  const corsHost: string = configService.get('CORS_HOST');
   app.enableCors({
-    origin: [corsHost],
+    origin: [corsHost, /\.vercel\.app$/],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
   });
 
